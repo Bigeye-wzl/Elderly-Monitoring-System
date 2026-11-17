@@ -1,0 +1,52 @@
+# 智慧养老监护系统
+
+static_library("elderly_care_example") {
+  sources = [
+    "src/elderly_care_example.c",
+    "src/sensors.c",
+    "src/lcd_ui.c",
+    "src/mpu_uart.c",
+    "src/alert.c",
+    # 华为云 MQTT
+    "src/cloud_mqtt.c",
+    "src/oc_mqtt.c",
+    "src/oc_mqtt_profile_package.c",
+    # WiFi 配网 + NFC
+    "src/wifi_provision.c",
+    "src/nfc_provision.c",
+    # NFC 驱动 (NT3H1201)
+    "src/nfc/NT3H.c",
+    "src/nfc/ndef.c",
+    "src/nfc/nfc.c",
+    "src/nfc/nfcForum.c",
+    "src/nfc/rtdText.c",
+    "src/nfc/rtdUri.c",
+    # LCD 驱动从 b23 引入
+    "../b23_iot_lcd/src/lcd.c",
+  ]
+
+  include_dirs = [
+    "./include",
+    "./src/nfc",
+    "../b23_iot_lcd/include",
+    "//utils/native/lite/include",
+    "//utils/native/lite/hals/file",
+    "//base/iot_hardware/peripheral/interfaces/kits",
+    "//foundation/communication/wifi_lite/interfaces/wifiservice",
+    "//device/rockchip/rk2206/sdk_liteos/board/include",
+    "//third_party/lwip/src/include",
+    "//kernel/liteos_m/components/net/lwip-2.1/porting/include",
+    "//third_party/musl/porting/liteos_m/kernel/include",
+    # MQTT + cJSON (华为云)
+    "//third_party/cJSON",
+    "//third_party/paho_mqtt/MQTTPacket/src",
+    "//third_party/paho_mqtt/MQTTClient-C/src",
+  ]
+
+  deps = [
+    "//device/rockchip/hardware:hardware",
+    "//kernel/liteos_m/kal/posix",
+    "//device/rockchip/rk2206/adapter/hals/communication/wifi_lite/wifiservice:wifiservice",
+    "//utils/native/lite/kv_store/src:utils_kv_store",
+  ]
+}
