@@ -42,6 +42,14 @@ z_elderly_care/
     └── cloud_properties.h       # 华为云产品模型（服务/属性名）
 ```
 
+## 前后端与固件目录
+
+| 目录 | 说明 |
+|---|---|
+| [`firmware/`](firmware/) | 编译好的固件镜像：主控板 `Firmware.img`、星闪网关与节点 `.fwpkg` |
+| [`web/`](web/) | 前端代码（可视化大屏 / H5），待迁入 |
+| [`server/`](server/) | 后端服务代码，待迁入 |
+
 ## 开发环境
 
 - Ubuntu 22.04（WSL2 / Docker / 原生均可）

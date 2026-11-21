@@ -26,3 +26,13 @@ __pycache__/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# ===== 前端 Node 工程 =====
+**/node_modules/
+**/dist/
+**/.env.local
+**/*.local
+
+# ===== 后端 Python 虚拟环境 =====
+**/venv/
+**/.venv/
