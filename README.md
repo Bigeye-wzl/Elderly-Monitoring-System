@@ -23,7 +23,57 @@
 
 ## 目录结构
 
-项目源码位于 `vendor/lockzhiner/rk2206/samples/z_elderly_care/`：
+本仓库为 OpenHarmony 3.0 LTS 基线大仓，`vendor/lockzhiner/` 下为本项目板级适配与应用代码。
+
+```
+Elderly-Monitoring-System/
+├── applications/            # OpenHarmony 应用样例（基线）
+│   ├── sample/              # camera、wifi-iot 等官方样例
+│   └── standard/            # 标准系统应用（基线）
+├── base/                    # OpenHarmony 基础系统组件（基线源码备份）
+├── build/                   # 构建系统（GN / Ninja 脚本）
+├── device/
+│   └── rockchip/            # RK2206 板级适配与烧录工具
+├── docs/                    # 全局文档：架构、协议、部署记录
+├── domains/
+│   └── iot/link/            # 物联网领域链路组件（基线）
+├── drivers/                 # 内核 / 外设驱动（基线）
+├── firmware/                # ★ 编译产物固件镜像（不参与编译）
+│   ├── 主控板固件/          # Firmware.img / Firmware.md5 / rk2206_db_loader.bin
+│   └── 星闪固件/            # gateway / client1 / client2 的 *.fwpkg
+├── foundation/              # OpenHarmony 基础库（基线源码备份）
+├── interface/
+│   └── sdk-js/              # JS 接口声明（基线）
+├── kernel/                  # LiteOS-M 内核（基线源码备份）
+├── prebuilts/               # 预编译工具链 / 二进制（基线）
+├── productdefine/
+│   └── common/              # 产品配置定义（基线）
+├── server/                  # ★ 后端服务：设备接入 / 业务接口（待迁入）
+├── test/                    # 测试框架：developertest / xdevice / xts
+├── third_party/             # 第三方开源依赖（基线）
+├── tools/                   # 仓库级工具：字模生成 gen_font.py / gen_font_lcdh.py
+├── utils/                   # 原生工具库 / NDK 配置（基线）
+├── vendor/
+│   └── lockzhiner/
+│       └── rk2206/          # ★ 板级适配与本项目应用
+│           ├── samples/
+│           │   ├── z_elderly_care/   # 本项目主程序（传感器/告警/UI/配网/上云）
+│           │   └── b23_iot_lcd/      # ST7789V LCD 驱动依赖
+│           ├── hals/ hdf_config/ hdf_drivers/ image/ images/
+│           └── BUILD.gn / config.json
+├── web/                     # ★ 前端：可视化大屏 / H5（待迁入）
+├── .gitignore               # 构建产物、依赖目录、凭据忽略规则
+├── build.py / build.sh      # 一键构建脚本
+├── flash.py                 # 串口烧录脚本
+├── package_fw.sh            # 固件打包脚本
+├── LICENSE                  # Apache-2.0
+├── README_zh.md             # 中文说明（基线自带）
+└── README.md                # 本文件
+```
+
+### 项目主程序内部结构
+
+主程序位于 `vendor/lockzhiner/rk2206/samples/z_elderly_care/`：
 
 ```
 z_elderly_care/
